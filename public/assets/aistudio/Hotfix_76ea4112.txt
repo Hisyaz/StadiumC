@@ -1,0 +1,49 @@
+================================================================================
+           NEW HOTFIX ROADMAP: GRANDSTAND ARCHITECTURE & PROJECTION OVERHAUL
+================================================================================
+
+[Phase D4.5A] Dynamic Stand Dimensional Scaling Engine
+  - Replace static 120px depth with dynamic `calculateDynamicStandDepth(stand, shape)`.
+  - Stand depth physically expands based on tier count:
+      • 1 Tier:  75px – 90px (compact municipal terrace)
+      • 2 Tiers: 135px – 155px (standard ground)
+      • 3 Tiers: 190px – 220px (large multi-deck stadium)
+      • 4 Tiers: 250px – 285px (massive monumental arena)
+  - Tier Size scaling: Small (-15% depth, 2 rows), Medium (1.0x, 3 rows), Large (+25% depth, 4–5 rows).
+  - Stand outer boundaries (West, East, North, South, and 45° Corner Miters) dynamically adapt 
+    to each stand's individual depth and tier configuration.
+
+[Phase D4.5B] Multi-Floor Tier Architecture (True Elevated Levels)
+  - Render each tier as an authentic upper floor stacked over the lower tier.
+  - Structural concrete balcony fascias (#cbd5e1 / #94a3b8) with cast drop shadows.
+  - Polished safety balustrades and prominent access vomitory tunnels (entry portals) centered in each tier.
+  - Seat rows clearly driven by `tierSize` with visible tread steps and risers.
+  - Material finishes (concrete, brick, steel, timber) cleanly applied to tier fascias and outer walls.
+
+[Phase D4.5C] Monolithic "The Wall" Stand Architecture
+  - For stands with `type === 'wall'`:
+      • Render as a single massive, steep, uninterrupted terrace (210px–260px depth).
+      • Pronounced high-oblique rake angle going higher and further away.
+      • Continuous horizontal crash barriers (geländer) on every terrace step.
+      • Towering rear parapet with rear vomitory gates.
+
+[Phase D4.5D] Pure No-Stand Removal & Contextual Backdrop Reveal
+  - For stands with `type === 'none' | 'no_stand'`:
+      • Stand depth drops to 0px (no grandstand slab, no rear wall box).
+      • Renders only the low pitch-edge perimeter barrier (chainlink, low stone wall, or hoardings).
+      • Selected contextual backdrop (mountains, forest, skyline, ocean, etc.) directly reveals 
+        behind the barrier with leaning supporters.
+      • Corner miters seamlessly taper into open ground when an adjoining stand is "no stand".
+
+[Phase D4.5E] Concentric Round Track Fix & Clean Inner-Rim Floodlights
+  - Fix `drawStadiumApron` for `shape === 'round'`: Draw concentric circular track arcs 
+    matching the circular coliseum bowl geometry.
+  - Remove all stray outer horizon/south exterior floodlight towers.
+  - Anchor floodlight clusters cleanly onto the 4 structural corner parapets / inner rim of the bowl,
+    matching the reference image.
+
+[Phase D4.5F] Outer Walls, Entrances & 4-Shape Geometry Polish
+  - Render thick structural outer walls with stone coping and entrance portals matching the reference art.
+  - Ensure all 4 shapes (Round, Oval, High-Oblique Trapezoid, Square/Rectangular) showcase distinct
+    perimeter walls and south entrance pavilions.
+================================================================================
